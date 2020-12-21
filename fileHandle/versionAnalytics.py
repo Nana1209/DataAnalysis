@@ -1,7 +1,7 @@
 import csv
-f = open('D:\REST API file\\result\\versionLocation-cate1.csv','r',newline='')
+f = open('D:\REST API file\\result\\versionLocation-cate2.csv','r',newline='')
 reader = csv.reader(f)
-f7 = open('D:/REST API file/result/versionLocation-cate-rate1.csv', 'w', newline='')
+f7 = open('D:/REST API file/result/versionLocation-cate-rate2.csv', 'w', newline='')
 writer7 = csv.writer(f7)
 dict={}
 for row in reader:
