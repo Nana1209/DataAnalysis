@@ -1,16 +1,18 @@
 import csv
+import copy
 f = open('D:\REST API file\\result\\file_category.csv','r',newline='')
 reader = csv.reader(f)
-f1 = open('D:\REST API file\\result\\token)-all10965381012015188870.csv','r',newline='')
+f1 = open('D:\REST API file\\result\\apiInHost-all5453723660605736535.csv','r',newline='')
 reader1 = csv.reader(f1)
-f7 = open('D:/REST API file/result/acceptToken-cate3.csv', 'w', newline='')
+f7 = open('D:/REST API file/result/apiInHost-cate.csv', 'w', newline='')
 writer7 = csv.writer(f7)
+# 文件名：类别
 dict={}
 for row in reader:
     list=[]
     list.append(row[2])
     dict[row[0]]=list
-#print(dict)
+print(dict)
 
 #version
 # for row in reader1:
@@ -26,7 +28,11 @@ for row in reader:
 
 # acceptToken
 for row in reader1:
+    # print(row)
+    list1 = []
     if row[0] in dict:
-        list = dict[row[0]]
-        list.extend(row[1:])
-        writer7.writerow([row[0]] + list)
+        # 深拷贝，直接赋值是浅拷贝，是一种引用，会改变被引用的值https://blog.csdn.net/u010712012/article/details/79754132
+        list1 = copy.deepcopy(dict[row[0]])
+        list1.extend(row[1:])
+        print([row[0]] + list1)
+        writer7.writerow([row[0]] + list1)

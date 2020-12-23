@@ -5,7 +5,7 @@ f = open('D:\REST API file\\result\\status-all.json','r',newline='')
 json_datas=json.load(f)
 #print(len(json_datas))
 
-"""
+"""统计各状态码出现的次数
 statulines={}
 for fileName in json_datas:
     data=json_datas[fileName]
