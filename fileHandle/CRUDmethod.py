@@ -2,7 +2,7 @@ import csv
 
 f = open('D:\REST API file\\result\\CRUDPathOperations-cate.csv','r',newline='')
 reader = csv.reader(f)
-f7 = open('D:/REST API file/result/CRUDPathOperationsMistake-cate.csv', 'w', newline='')
+f7 = open('D:/REST API file/result/CRUDPathOperationsMistake-cate1.csv', 'w', newline='')
 writer7 = csv.writer(f7)
 mistake=0
 for row in reader:
@@ -26,6 +26,7 @@ for row in reader:
                 mistake=1
     # print(row[0]+str(mistake))
     list.append(mistake)
+    list.append(row[4])
     list.extend(row[2:])
     print(list)
     writer7.writerow(list)

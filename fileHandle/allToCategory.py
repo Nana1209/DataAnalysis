@@ -2,9 +2,9 @@ import csv
 import copy
 f = open('D:\REST API file\\result\\file_category.csv','r',newline='')
 reader = csv.reader(f)
-f1 = open('D:\REST API file\\result\\apiInHost-all5453723660605736535.csv','r',newline='')
+f1 = open('D:\REST API file\\result\hasCacheStatic-all4932095607673570634.csv','r',newline='')
 reader1 = csv.reader(f1)
-f7 = open('D:/REST API file/result/apiInHost-cate.csv', 'w', newline='')
+f7 = open('D:/REST API file/result/hasCacheStatic-cate.csv', 'w', newline='')
 writer7 = csv.writer(f7)
 # 文件名：类别
 dict={}
