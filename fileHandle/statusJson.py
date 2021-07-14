@@ -1,6 +1,6 @@
 import csv
 import json
-
+# -*- coding: UTF-8 -*-
 f = open('D:\REST API file\\result\\status-all.json','r',newline='')
 json_datas=json.load(f)
 #print(len(json_datas))
