@@ -1,8 +1,8 @@
 import csv
 f = open('D:\project/rester\logs/dynamic.log','r',encoding='utf-8',newline='')
 
-f7 = open('D:\REST API file/result\dynamicLog/enhancedEvaluateResult.csv', 'w',encoding='utf-8', newline='')
-writer7 = csv.writer(f7)
+# f7 = open('D:\REST API file/result\dynamicLog/enhancedEvaluateResult.csv', 'w',encoding='utf-8', newline='')
+# writer7 = csv.writer(f7)
 
 resultRows=[]
 
@@ -25,46 +25,47 @@ while True:
         resultRow.extend(row[index3 + 13:].split(",,"))
         print(resultRow)
         resultRows.append(resultRow)
-
+print(resultRows[0][7])
+count=0
+hasCacheSchemeCount=0#resultRow[8]
+hasEtagCount=0
+hasDateCount=0
+hasExpiresCount=0
+hasLastModifiedCount=0
+hasCacheControlCount=0
+hasContentTypeCount=0
+contentTypeList={}
+isHateoasCount=0
 for resultRow in resultRows:
-    print(resultRow[8])
-    writer7.writerow(resultRow)
-# status={}
-# for request in requests:
-#     if request[0] in status:
-#         status[request[0]].append(request[1:])
-#         # print(status[request[0]])
-#     else:
-#         pathList=[]
-#         pathList.append(request[1:])
-#         status[request[0]]=pathList
-#         # print(status[request[0]])
-# print(status)
-# statusStatics={}
-# for request in requests:
-#     if request[5] in statusStatics:
-#         statusStatics[request[5]][request[6]]=statusStatics[request[5]].get(request[6],0)+1
-#     else:
-#         statusTemp={}
-#         statusTemp[request[6]]=1
-#         statusStatics[request[5]]=statusTemp
-# print(statusStatics)
-# results=[]
-# for k,v in statusStatics.items():
-#
-#     # print(k)
-#     account=0
-#     for k1,v1 in v.items():
-#         account=account+v1
-#     for k1,v1 in v.items():
-#         # print(k1,v1)
-#         result=[]
-#         result.append(k)
-#         result.append(k1)
-#         result.append(v1)
-#         result.append(v1/account)
-#         # print(result)
-#         results.append(result)
-# for result in results:
-#     print(result)
-#     writer7.writerow(result)
+    count+=1
+    if resultRow[8]=="true" :
+        hasCacheSchemeCount+=1
+    if resultRow[9]=="true" :
+        hasEtagCount+=1
+    if resultRow[10]=="true" :
+        hasDateCount+=1
+    if resultRow[11]=="true" :
+        hasExpiresCount+=1
+    if resultRow[12]=="true" :
+        hasLastModifiedCount+=1
+    if resultRow[13]=="true" :
+        hasCacheControlCount+=1
+    if resultRow[14]=="true" :
+        hasContentTypeCount+=1
+        if resultRow[15] in contentTypeList:
+            contentTypeList[resultRow[15]]+=1
+        else:
+            contentTypeList[resultRow[15]]=1
+    print(resultRow[16])
+    if resultRow[16].startswith('true'):
+
+        isHateoasCount+=1
+#     print(resultRow[6])
+#     print(resultRow[7])
+#     print(resultRow[8])
+#     # writer7.writerow(resultRow)
+#     # logger.info(
+#     #     "headerResult:" + hasCacheScheme + ",," + hasEtag + ",," + hasDate + ",," + hasExpires + ",," + hasLastModified + ",," +
+#     #     hasCacheControl + ",," + hasContentType + ",," + contentType);
+print(count,hasCacheSchemeCount,hasEtagCount,hasDateCount,hasExpiresCount,hasLastModifiedCount,hasCacheControlCount,hasContentTypeCount,isHateoasCount)
+# print(contentTypeList)
