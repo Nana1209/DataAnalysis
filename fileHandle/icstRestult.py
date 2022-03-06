@@ -15,7 +15,7 @@ for root, dirs, files in os.walk(file):
             f1 = open(os.path.join(root, f), 'r', encoding='utf-8', newline='')
             json_datas = json.load(f1)
             print(os.path.join(root, f))
-            f8 = open('D:\REST API file/result\icstConsistentResult/consistent.'+f, 'w', newline='')
+            f8 = open('D:\REST API file/result\icstConsistentResult/consistent.'+f+".csv", 'w', newline='')
             writer8 = csv.writer(f8)
 
             for methodPath, pathResult in json_datas['path-dy'].items():

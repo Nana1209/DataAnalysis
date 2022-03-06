@@ -1,11 +1,11 @@
 import csv
 import json
 # -*- coding: UTF-8 -*-
-f = open('D:/REST API/result/dynamicRestult/result.api.github.com.json','r',encoding='utf-8',newline='')
+f = open('D:\REST API file/result/dynamicLog/result.api.github.com.json','r',encoding='utf-8',newline='')
 json_datas=json.load(f)
 # print(json_datas)
 
-f8 = open('D:/REST API/result/dynamicRestult/consistentStatistics.csv', 'w', newline='')
+f8 = open('D:\REST API file/result/dynamicLog/consistentStatistics.github.csv', 'w', newline='')
 writer8 = csv.writer(f8)
 
 
@@ -32,7 +32,12 @@ for methodPath,pathResult in json_datas['path-dy'].items():
             hasResponseContentType=True
         if 'isHATEOAS-dy' in pathResult and pathResult['isHATEOAS-dy']==pathResult['hateoasStatic']:
             hateoas=True
-    writer8.writerow([methodPath,
-                      hasCacheControl,hasExpires,hasDate,hasEtag,hasLastModified,hasResponseContentType,hateoas])
-
+        writer8.writerow([methodPath,
+                          pathResult['hasCacheControl'], pathResult['hasCacheControlStatic'], hasCacheControl,
+                          pathResult['hasExpires'], pathResult['hasExpiresStatic'], hasExpires,
+                          pathResult['hasDate'], pathResult['hasDateStatic'], hasDate,
+                          pathResult['hasEtag'], pathResult['hasEtagStatic'], hasEtag,
+                          pathResult['hasLastModified'], pathResult['hasLastModifiedStatic'], hasLastModified,
+                          pathResult['hasContentType'], pathResult['hasResponseContentTypeStatic'], hasResponseContentType,
+                          pathResult['hateoasStatic'], hateoas])
 
