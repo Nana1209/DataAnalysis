@@ -1,7 +1,7 @@
 import os
 import csv
 import json
-file='D:\\REST API file\\result\\icstConsistentResult'
+file='D:\\REST API file\\result\\icstConsistentResultheteoas'
 for root, dirs, files in os.walk(file):
 
         # root 表示当前正在访问的文件夹路径
@@ -131,18 +131,19 @@ for root, dirs, files in os.walk(file):
                     else:
                         ResponseContentType00 += 1
 
-                if row[20]=='True':
-                    if row[19]=='True':
-                        hateoas11+=1
-                    else:
-                        hateoas00+=1
-                else:
-                    if row[19] == 'True':
-                        hateoas01 += 1
+                if row[19] == 'True':
+                    hateoas += 1
+                    if row[20] == 'True':
+                        hateoas11 += 1
                     else:
                         hateoas10 += 1
+                else:
+                    if row[20] == 'True':
+                        hateoas01 += 1
+                    else:
+                        hateoas00 += 1
 
-            f8 = open('D:\REST API file/result\icstConsistentStatic/static.'+f, 'w', newline='')
+            f8 = open('D:\REST API file/result\icstConsistentStatichateoas/static.'+f, 'w', newline='')
             writer8 = csv.writer(f8)
             writer8.writerow([sum])
             writer8.writerow([CacheControl,Expires,Date,Etag,LastModified,ResponseContentType,hateoas])

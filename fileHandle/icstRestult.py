@@ -1,7 +1,7 @@
 import os
 import csv
 import json
-file='D:\\REST API file\\result\\icstResult'
+file='D:\\REST API file\\result\\icstResultheteoas'
 for root, dirs, files in os.walk(file):
 
         # root 表示当前正在访问的文件夹路径
@@ -15,7 +15,7 @@ for root, dirs, files in os.walk(file):
             f1 = open(os.path.join(root, f), 'r', encoding='utf-8', newline='')
             json_datas = json.load(f1)
             print(os.path.join(root, f))
-            f8 = open('D:\REST API file/result\icstConsistentResult/consistent.'+f+".csv", 'w', newline='')
+            f8 = open('D:\REST API file/result\icstConsistentResultheteoas/consistent.'+f+".csv", 'w', newline='')
             writer8 = csv.writer(f8)
 
             for methodPath, pathResult in json_datas['path-dy'].items():
@@ -26,6 +26,7 @@ for root, dirs, files in os.walk(file):
                 hasLastModified = False
                 hasResponseContentType = False
                 hateoas = False
+                isHATEOASdy = False
                 if 'hasCacheControl' in pathResult:
                     if pathResult['hasCacheControl'] == pathResult['hasCacheControlStatic']:
                         hasCacheControl = True
@@ -39,6 +40,8 @@ for root, dirs, files in os.walk(file):
                         hasLastModified = True
                     if pathResult['hasContentType'] == pathResult['hasResponseContentTypeStatic']:
                         hasResponseContentType = True
+                    if 'isHATEOAS-dy' in pathResult:
+                        isHATEOASdy = pathResult['isHATEOAS-dy']
                     if 'isHATEOAS-dy' in pathResult and pathResult['isHATEOAS-dy'] == pathResult['hateoasStatic']:
                         hateoas = True
                     writer8.writerow([methodPath,
@@ -48,6 +51,6 @@ for root, dirs, files in os.walk(file):
                                   pathResult['hasEtag'] , pathResult['hasEtagStatic'],hasEtag,
                                   pathResult['hasLastModified'], pathResult['hasLastModifiedStatic'],hasLastModified,
                                   pathResult['hasContentType'] , pathResult['hasResponseContentTypeStatic'],hasResponseContentType,
-                                  pathResult['hateoasStatic'],hateoas])
+                                  isHATEOASdy,pathResult['hateoasStatic'],hateoas])
 
 

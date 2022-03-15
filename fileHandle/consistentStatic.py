@@ -1,6 +1,6 @@
 import os
 import csv
-f1 = open('D:\REST API file/result/dynamicLog/consistentStatistics.github.csv', 'r', encoding='utf-8', newline='')
+f1 = open('D:\REST API file/result/dynamicLog/consistentStatistics.github1.csv', 'r', encoding='utf-8', newline='')
 reader = csv.reader(f1)
 sum=0
 CacheControl = 0
@@ -119,18 +119,20 @@ for row in reader:
         else:
             ResponseContentType00 += 1
 
-    if row[20]=='True':
-        if row[19]=='True':
+    if row[19]=='True':
+        hateoas+=1
+        if row[20]=='True':
             hateoas11+=1
         else:
-            hateoas00+=1
+            hateoas10+=1
     else:
-        if row[19] == 'True':
+        if row[20] == 'True':
             hateoas01 += 1
         else:
-            hateoas10 += 1
+            hateoas00 += 1
 
-f8 = open('D:\REST API file/result/dynamicLog/static.github.csv', 'w', newline='')
+
+f8 = open('D:\REST API file/result/dynamicLog/static.github11.csv', 'w', newline='')
 writer8 = csv.writer(f8)
 writer8.writerow([sum])
 writer8.writerow([CacheControl,Expires,Date,Etag,LastModified,ResponseContentType,hateoas])
